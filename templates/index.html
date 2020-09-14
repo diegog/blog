@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="list-group">
+  {% for post in posts %}
+  <a href="/{{ post['id']}}.html" class="list-group-item">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{ post['title'] }}</h5>
+      <small>{{ post['post_date'] }}</small>
+    </div>
+    <p>Bacon ipsum dolor amet pancetta tongue leberkas, cow andouille cupim meatloaf.</p>
+  </a>
+  {% endfor %}
+</div>
+
+{% endblock body %}

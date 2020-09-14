@@ -1,0 +1,19 @@
+service: blog-diegog-io
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-1
+  
+package:
+  exclude:
+    - /**
+
+plugins:
+  - serverless-finch
+
+custom:
+  client:
+    bucketName: blog.diegog.io
+    distributionFolder: /dist/
