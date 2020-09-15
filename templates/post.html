@@ -1,5 +1,25 @@
 {% extends "base.html"%}
 
+{% block head %}
+<link rel="stylesheet" href="/assets/notebook_style.min.css">
+
+<style media="screen">
+  body {
+    background: #f4f4f4 !important;
+    padding-top: 56px;
+  }
+
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .navbar{
+    background: #f4f4f4;
+  }
+</style>
+{% endblock head%}
+
 {% block body %}
 <h1>{{ post['title'] }}</h1>
 <small>Posted on {{ post['post_date'] }} </small>

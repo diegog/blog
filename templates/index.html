@@ -1,7 +1,37 @@
 {% extends "base.html" %}
 
-{% block body %}
+{% block head %}
+<style media="screen">
+  body {
+    background: #f4f4f4 !important;
+    padding-top: 56px;
+  }
 
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .navbar{
+    background: #f4f4f4;
+  }
+
+  #content {
+    background: transparent !important;
+    position: relative;
+    float: left;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #sketch {
+    position: relative;
+  }
+</style>
+{% endblock head %}
+
+{% block body %}
 <div class="list-group">
   {% for post in posts %}
   <a href="/{{ post['id']}}.html" class="list-group-item">

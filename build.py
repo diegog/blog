@@ -54,3 +54,6 @@ for post in posts:
         f.write(post_template.render(post=post, content=content))
     if os.path.exists('posts/' + post['id'] + '/content.html'):
         os.remove('posts/' + post['id'] + '/content.html')
+
+# Copy assets
+shutil.copytree('assets/', 'dist/assets/')
