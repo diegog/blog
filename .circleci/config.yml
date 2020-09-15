@@ -1,0 +1,31 @@
+version: 2.1
+orbs:
+  aws-cli: circleci/aws-cli@1.3.0
+  serverless: circleci/serverless-framework@1.0.1
+jobs:
+  build-and-deploy:
+    docker:
+      -image: circleci/python:latest-node
+    steps:
+      - checkout
+      - aws-cli/setup
+      - serverless/setup:
+          app-name: serverless-framework-orb
+          org-name: circleci
+      - run:
+          name: "Initialize"
+          command: |
+          python3 -m venv venv
+          . venv/bin/activate
+          pip install -r requirements.txt
+          npm install
+      - run:
+          name: "Build"
+          command: python build.py
+      - run:
+          name: "Deploy"
+          command: sls client deploy --no-confirm
+workflows:
+  main:
+    jobs:
+      - build-and-deploy
