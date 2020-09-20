@@ -32,16 +32,26 @@
 {% endblock head %}
 
 {% block body %}
-<div class="list-group">
+<div class="container list-group mx-auto">
   {% for post in posts %}
-  <a href="/{{ post['id']}}.html" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">{{ post['title'] }}</h5>
-      <small>{{ post['post_date'] }}</small>
-    </div>
-    <p>{{ post['description']}}</p>
+  <a class="list-group-item list-group-item-action" href="/{{ post['id']}}.html">
+    <table class="table table-borderless">
+      <tr>
+        <th scope="col">
+          <td class="align-middle">
+            <img class="rounded float-left img-fluid" src="/images/{{ post['id'] }}.gif" style="max-width: 80px; max-height: 80px" hspace='10'>
+          </td>
+        </th>
+        <th scope="col d-flex">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ post['title'] }}</h5>
+            <small>{{ post['post_date'] }}</small>
+          </div>
+          <p class="text-left mb-0" style="font-weight:normal"> {{ post['description'] }}</p>
+        </th>
+      </tr>
+    </table>
   </a>
   {% endfor %}
 </div>
-
 {% endblock body %}

@@ -29,6 +29,10 @@ template_env = Environment(
     loader=FileSystemLoader('./templates/')
 )
 
+# Copy assets
+shutil.copytree('assets/css', 'dist/css')
+os.mkdir("./dist/images/")
+
 post_names = os.listdir('posts/')
 posts = []
 
@@ -36,6 +40,7 @@ for post in post_names:
     with open('posts/' + post + '/data.json') as f:
         d = json.load(f)
     posts.append(d)
+    shutil.copyfile('posts/' + post + '/thumbnail.gif', 'dist/images/'+post+'.gif')
 
 # Create blog homepage
 index_template = template_env.get_template('index.html')
@@ -54,6 +59,3 @@ for post in posts:
         f.write(post_template.render(post=post, content=content))
     if os.path.exists('posts/' + post['id'] + '/content.html'):
         os.remove('posts/' + post['id'] + '/content.html')
-
-# Copy assets
-shutil.copytree('assets/', 'dist/assets/')
